@@ -1,0 +1,36 @@
+replicas: 1
+
+storage:
+  data:
+    name: "vaultwarden-data"
+    size: "10Gi"
+    class: "linode-block-storage"
+    path: "/data"
+    accessMode: "ReadWriteOnce"
+
+database:
+  type: postgresql
+  existingSecret: "vaultwarden-db-secret"
+  existingSecretKey: "url"
+
+domain: "https://warden.mohannadotaibi.com"
+
+signupsAllowed: false
+
+adminToken:
+  existingSecret: "vaultwarden-admin-token"
+  existingSecretKey: "token"
+
+ingress:
+  enabled: true
+  class: "nginx"
+  tls: true
+  tlsSecret: warden-mohannadotaibi-com-crt
+  hostname: warden.mohannadotaibi.com
+  allowList: "10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16"
+  nginxIngressAnnotations: true
+  additionalAnnotations:
+    cert-manager.io/cluster-issuer: http01-clusterissuer
+    nginx.ingress.kubernetes.io/backend-protocol: HTTP
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
