@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: github-bot
+  labels:
+    app: github-bot
+  namespace: mfo-bots
+spec:
+  replicas: 1  # Start with 1 replica since this seems to be a stateful app
+  selector:
+    matchLabels:
+      app: github-bot
+  template:
+    metadata:
+      labels:
+        app: github-bot
+    spec:
+      imagePullSecrets:
+      - name: ghcr-secret
+      containers:
+      - name: github-bot
+        image: ghcr.io/flowdegree/js_github_bot:latest  # Replace with your actual image
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+        envFrom:
+          - secretRef:
+              name: github-bot-secrets
