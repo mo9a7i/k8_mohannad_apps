@@ -27,3 +27,5 @@ spec:
         envFrom:
           - secretRef:
               name: foursquare-bot-secrets
+      imagePullSecrets:
+      - name: ghcr-secret
