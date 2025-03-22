@@ -4,6 +4,7 @@ metadata:
   name: foursquare-bot
   labels:
     app: foursquare-bot
+  namespace: mfo-bots
 spec:
   replicas: 1  # Start with 1 replica since this seems to be a stateful app
   selector:
@@ -14,6 +15,8 @@ spec:
       labels:
         app: foursquare-bot
     spec:
+      imagePullSecrets:
+      - name: ghcr-secret
       containers:
       - name: foursquare-bot
         image: ghcr.io/flowdegree/js_foursquare_bot:latest  # Replace with your actual image
@@ -27,5 +30,3 @@ spec:
         envFrom:
           - secretRef:
               name: foursquare-bot-secrets
-      imagePullSecrets:
-      - name: ghcr-secret
