@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: linear-discord-bot
+  labels:
+    app: linear-discord-bot
+  namespace: mfo-bots
+spec:
+  replicas: 1  # Start with 1 replica since this seems to be a stateful app
+  selector:
+    matchLabels:
+      app: linear-discord-bot
+  template:
+    metadata:
+      labels:
+        app: linear-discord-bot
+    spec:
+      imagePullSecrets:
+      - name: ghcr-secret
+      containers:
+      - name: linear-discord-bot
+        image: ghcr.io/flowdegree/linear-discord-bot:latest  # Replace with your actual image
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+        envFrom:
+          - secretRef:
+              name: linear-discord-bot-secrets
