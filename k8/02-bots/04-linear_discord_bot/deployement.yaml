@@ -20,6 +20,8 @@ spec:
       containers:
       - name: linear-discord-bot
         image: ghcr.io/flowdegree/linear-discord-bot:latest  # Replace with your actual image
+        ports:
+        - containerPort: 3000
         resources:
           requests:
             memory: "128Mi"
