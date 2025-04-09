@@ -4,9 +4,9 @@ storage:
   data:
     name: "vaultwarden-data"
     size: "10Gi"
-    class: "linode-block-storage"
     path: "/data"
-    accessMode: "ReadWriteOnce"
+    storageClassName: longhorn
+    accessMode: "ReadWriteMany"
 
 database:
   type: postgresql
