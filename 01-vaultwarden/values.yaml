@@ -10,16 +10,16 @@ storage:
 
 database:
   type: postgresql
-  existingSecret: "vaultwarden-db-secret"
-  existingSecretKey: "url"
+  existingSecret: "vaultwarden-secrets"
+  existingSecretKey: "db_url"
 
 domain: "https://warden.mohannadotaibi.com"
 
 signupsAllowed: false
 
 adminToken:
-  existingSecret: "vaultwarden-admin-token"
-  existingSecretKey: "token"
+  existingSecret: "vaultwarden-secrets"
+  existingSecretKey: "admin_token"
 
 ingress:
   enabled: true
