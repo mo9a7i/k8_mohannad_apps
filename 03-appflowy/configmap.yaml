@@ -8,6 +8,7 @@ data:
   APPFLOWY_ENVIRONMENT: "production"
   APPFLOWY_LOG_LEVEL: "info"
   APPFLOWY_PORT: "8000"
+  APPFLOWY_WEB_URL: "https://appflowy.mohannadotaibi.com"
   
   # Hetzner Object Storage Configuration (non-sensitive)
   APPFLOWY_S3_REGION: "eu-central-1"  # Hetzner region
