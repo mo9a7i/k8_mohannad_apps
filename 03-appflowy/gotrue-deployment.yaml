@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: gotrue
-        image: supabase/gotrue:v2.158.1
+        image: appflowyinc/gotrue:latest
         ports:
         - containerPort: 9999
         readinessProbe:

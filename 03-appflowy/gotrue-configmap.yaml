@@ -4,9 +4,10 @@ metadata:
   name: gotrue-config
   namespace: appflowy
 data:
-  # GoTrue Configuration
+  # GoTrue Configuration (matching official docker-compose.yml)
   API_EXTERNAL_URL: "https://appflowy.mohannadotaibi.com/gotrue"
-  GOTRUE_SITE_URL: "https://appflowy.mohannadotaibi.com"
+  GOTRUE_SITE_URL: "appflowy-flutter://"
+  GOTRUE_URI_ALLOW_LIST: "**"
   
   # Database Configuration
   GOTRUE_DB_DRIVER: "postgres"
@@ -18,9 +19,19 @@ data:
   
   # JWT Configuration
   GOTRUE_JWT_EXP: "604800"  # 7 days
+  GOTRUE_JWT_ADMIN_GROUP_NAME: "supabase_admin"
   
   # Admin Credentials
   GOTRUE_ADMIN_EMAIL: "admin@example.com"
+  
+  # Mailer URL Paths
+  GOTRUE_MAILER_URLPATHS_CONFIRMATION: "/gotrue/verify"
+  GOTRUE_MAILER_URLPATHS_INVITE: "/gotrue/verify"
+  GOTRUE_MAILER_URLPATHS_RECOVERY: "/gotrue/verify"
+  GOTRUE_MAILER_URLPATHS_EMAIL_CHANGE: "/gotrue/verify"
+  
+  # SMTP Configuration
+  GOTRUE_SMTP_MAX_FREQUENCY: "1ns"
   
   # Port Configuration
   PORT: "9999"
