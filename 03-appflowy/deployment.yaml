@@ -21,8 +21,7 @@ spec:
         ports:
         - containerPort: 8000
         readinessProbe:
-          httpGet:
-            path: /health
+          tcpSocket:
             port: 8000
           initialDelaySeconds: 30
           periodSeconds: 10
@@ -30,8 +29,7 @@ spec:
           successThreshold: 1
           failureThreshold: 3
         livenessProbe:
-          httpGet:
-            path: /health
+          tcpSocket:
             port: 8000
           initialDelaySeconds: 60
           periodSeconds: 30
