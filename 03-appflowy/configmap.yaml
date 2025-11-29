@@ -9,6 +9,9 @@ data:
   APPFLOWY_BASE_URL: "https://appflowy.mohannadotaibi.com"
   APPFLOWY_WEBSOCKET_BASE_URL: "wss://appflowy.mohannadotaibi.com/ws/v2"
   
+  # GoTrue Configuration
+  APPFLOWY_GOTRUE_BASE_URL: "http://gotrue-service:9999"
+  
   # Database Configuration
   APPFLOWY_DATABASE_MAX_CONNECTIONS: "40"
   

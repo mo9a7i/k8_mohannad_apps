@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gotrue-config
+  namespace: appflowy
+data:
+  # GoTrue Configuration
+  API_EXTERNAL_URL: "https://appflowy.mohannadotaibi.com/gotrue"
+  
+  # User Registration & Login Settings
+  GOTRUE_MAILER_AUTOCONFIRM: "true"
+  GOTRUE_DISABLE_SIGNUP: "false"
+  GOTRUE_RATE_LIMIT_EMAIL_SENT: "100"
+  
+  # JWT Configuration
+  GOTRUE_JWT_EXP: "604800"  # 7 days
+  
+  # Admin Credentials
+  GOTRUE_ADMIN_EMAIL: "admin@example.com"
+  
+  # Port Configuration
+  PORT: "9999"
