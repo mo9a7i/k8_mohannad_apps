@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: appflowy
+  labels:
+    app: appflowy
+  namespace: appflowy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: appflowy
+  template:
+    metadata:
+      labels:
+        app: appflowy
+    spec:
+      containers:
+      - name: appflowy
+        image: appflowyinc/appflowy_cloud:latest
+        ports:
+        - containerPort: 8000
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+          successThreshold: 1
+          failureThreshold: 3
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          initialDelaySeconds: 60
+          periodSeconds: 30
+          timeoutSeconds: 5
+          failureThreshold: 3
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "200m"
+          limits:
+            memory: "2Gi"
+            cpu: "1000m"
+        envFrom:
+        - configMapRef:
+            name: appflowy-config
+        - secretRef:
+            name: appflowy-secrets
+        volumeMounts:
+        - name: appflowy-cache
+          mountPath: /app/data
+      volumes:
+      - name: appflowy-cache
+        emptyDir:
+          sizeLimit: 1Gi

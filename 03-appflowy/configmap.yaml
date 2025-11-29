@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: appflowy-config
+  namespace: appflowy
+data:
+  # Application Configuration
+  APPFLOWY_ENVIRONMENT: "production"
+  APPFLOWY_LOG_LEVEL: "info"
+  APPFLOWY_PORT: "8000"
+  
+  # Hetzner Object Storage Configuration (non-sensitive)
+  APPFLOWY_S3_REGION: "eu-central-1"  # Hetzner region
+  APPFLOWY_S3_BUCKET: "appflowy-prod"
+  APPFLOWY_S3_ENDPOINT: "https://hel1.your-objectstorage.com"  # Hetzner S3 endpoint
+  APPFLOWY_S3_FORCE_PATH_STYLE: "true"  # Required for Hetzner compatibility
+  
+  # Cache Configuration
+  APPFLOWY_CACHE_SIZE: "1073741824"  # 1GB in bytes
+  APPFLOWY_CACHE_TTL: "3600"         # 1 hour in seconds
