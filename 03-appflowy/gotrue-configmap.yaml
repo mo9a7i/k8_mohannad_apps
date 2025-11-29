@@ -6,6 +6,7 @@ metadata:
 data:
   # GoTrue Configuration
   API_EXTERNAL_URL: "https://appflowy.mohannadotaibi.com/gotrue"
+  GOTRUE_SITE_URL: "https://appflowy.mohannadotaibi.com"
   
   # Database Configuration
   GOTRUE_DB_DRIVER: "postgres"
