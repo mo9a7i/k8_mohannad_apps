@@ -7,6 +7,9 @@ data:
   # GoTrue Configuration
   API_EXTERNAL_URL: "https://appflowy.mohannadotaibi.com/gotrue"
   
+  # Database Configuration
+  GOTRUE_DB_DRIVER: "postgres"
+  
   # User Registration & Login Settings
   GOTRUE_MAILER_AUTOCONFIRM: "true"
   GOTRUE_DISABLE_SIGNUP: "false"
