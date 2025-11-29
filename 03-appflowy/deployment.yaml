@@ -15,6 +15,18 @@ spec:
       labels:
         app: appflowy
     spec:
+      initContainers:
+      - name: wait-for-gotrue
+        image: curlimages/curl:latest
+        command: ['sh', '-c']
+        args:
+        - |
+          echo "Waiting for GoTrue to be ready..."
+          until curl -f http://gotrue-service:9999/health; do
+            echo "GoTrue not ready, waiting 5 seconds..."
+            sleep 5
+          done
+          echo "GoTrue is ready!"
       containers:
       - name: appflowy
         image: appflowyinc/appflowy_cloud:latest
